@@ -5,4 +5,6 @@ package hu.bme.aut.mobsoft.lab.mobsoft.ui.elementlist;
  */
 
 public interface ElementListScreen {
+    void onSuccess();
+    void onFailure();
 }

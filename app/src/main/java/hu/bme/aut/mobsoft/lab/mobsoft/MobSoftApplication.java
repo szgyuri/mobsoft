@@ -16,8 +16,8 @@ public class MobSoftApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        injector = DaggerMobSoftApplicationComponent.builder().
-                uIModule(new UIModule(this))
+        injector = DaggerMobSoftApplicationComponent.builder()
+                .uIModule(new UIModule(this))
                 .build();
     }
 }

@@ -5,4 +5,5 @@ package hu.bme.aut.mobsoft.lab.mobsoft.ui.elementdetails;
  */
 
 public interface ElementDetailsScreen {
+    void addedToFavourite(String id);
 }
