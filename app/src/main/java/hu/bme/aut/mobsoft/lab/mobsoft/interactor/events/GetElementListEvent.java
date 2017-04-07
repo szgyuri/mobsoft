@@ -1,17 +1,19 @@
 package hu.bme.aut.mobsoft.lab.mobsoft.interactor.events;
 
-import hu.bme.aut.mobsoft.lab.mobsoft.model.Movie;
+import java.util.List;
+
+import hu.bme.aut.mobsoft.lab.mobsoft.model.Element;
 
 /**
  * Created by Szabo Gyorgy on 2017. 04. 07..
  */
 
-public class GetMovieEvent {
+public class GetElementListEvent {
     private int code;
-    private Movie movie;
+    private List<Element> movies;
     private Throwable throwable;
 
-    public GetMovieEvent() {
+    public GetElementListEvent() {
     }
 
     public int getCode() {
@@ -22,12 +24,12 @@ public class GetMovieEvent {
         this.code = code;
     }
 
-    public Movie getMovie() {
-        return movie;
+    public List<Element> getMovies() {
+        return movies;
     }
 
-    public void setMovie(Movie movie) {
-        this.movie = movie;
+    public void setMovies(List<Element> movies) {
+        this.movies = movies;
     }
 
     public Throwable getThrowable() {

@@ -1,18 +1,12 @@
 package hu.bme.aut.mobsoft.lab.mobsoft.ui.main;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
 
-import javax.inject.Inject;
-
-import hu.bme.aut.mobsoft.lab.mobsoft.R;
 import hu.bme.aut.mobsoft.lab.mobsoft.MobSoftApplication;
+import hu.bme.aut.mobsoft.lab.mobsoft.R;
 
-public class MainActivity extends AppCompatActivity implements MainScreen {
-
-    @Inject
-    MainPresenter mainPresenter;
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,22 +14,5 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
         setContentView(R.layout.activity_main);
 
         MobSoftApplication.injector.inject(this);
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        mainPresenter.attachScreen(this);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        mainPresenter.detachScreen();
-    }
-
-    @Override
-    public void showMessage(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 }

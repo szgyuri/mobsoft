@@ -1,6 +1,6 @@
 package hu.bme.aut.mobsoft.lab.mobsoft.ui.elementdetails;
 
-import hu.bme.aut.mobsoft.lab.mobsoft.model.Movie;
+import hu.bme.aut.mobsoft.lab.mobsoft.model.Element;
 
 /**
  * Created by Szabo Gyorgy on 2017. 03. 24..
@@ -9,5 +9,5 @@ import hu.bme.aut.mobsoft.lab.mobsoft.model.Movie;
 public interface ElementDetailsScreen {
     void addedToFavourite(String id);
     void onFailure();
-    void onSuccessGetMovie(Movie movie);
+    void onSuccessGetElement(Element element);
 }

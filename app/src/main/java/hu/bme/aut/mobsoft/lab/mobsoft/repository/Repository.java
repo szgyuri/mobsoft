@@ -4,7 +4,7 @@ import android.content.Context;
 
 import java.util.List;
 
-import hu.bme.aut.mobsoft.lab.mobsoft.model.Movie;
+import hu.bme.aut.mobsoft.lab.mobsoft.model.Element;
 
 /**
  * Created by Szabo Gyorgy on 2017. 04. 07..
@@ -15,9 +15,11 @@ public interface Repository {
 
     void close();
 
-    List<Movie> getMoviesList();
+    List<Element> getElementList();
 
-    Movie getMovie(long id);
+    Element getElement(long id);
 
-    boolean isInDB(Movie movie);
+    void saveFavourite(Element element);
+
+    boolean isInDB(Element element);
 }

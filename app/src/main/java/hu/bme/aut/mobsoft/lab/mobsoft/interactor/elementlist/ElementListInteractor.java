@@ -6,8 +6,8 @@ import javax.inject.Inject;
 
 import de.greenrobot.event.EventBus;
 import hu.bme.aut.mobsoft.lab.mobsoft.MobSoftApplication;
-import hu.bme.aut.mobsoft.lab.mobsoft.interactor.events.GetMoviesListEvent;
-import hu.bme.aut.mobsoft.lab.mobsoft.model.Movie;
+import hu.bme.aut.mobsoft.lab.mobsoft.interactor.events.GetElementListEvent;
+import hu.bme.aut.mobsoft.lab.mobsoft.model.Element;
 import hu.bme.aut.mobsoft.lab.mobsoft.repository.Repository;
 
 /**
@@ -24,9 +24,9 @@ public class ElementListInteractor {
         MobSoftApplication.injector.inject(this);}
 
     public void getMovieList() {
-        GetMoviesListEvent event = new GetMoviesListEvent();
+        GetElementListEvent event = new GetElementListEvent();
         try {
-            List<Movie> movies = repository.getMoviesList();
+            List<Element> movies = repository.getElementList();
             event.setMovies(movies);
             bus.post(event);
         } catch (Exception e) {

@@ -7,7 +7,7 @@ import com.orm.SugarRecord;
 
 import java.util.List;
 
-import hu.bme.aut.mobsoft.lab.mobsoft.model.Movie;
+import hu.bme.aut.mobsoft.lab.mobsoft.model.Element;
 
 /**
  * Created by Szabo Gyorgy on 2017. 04. 07..
@@ -25,24 +25,29 @@ public class SugarOrmRepository implements Repository {
     }
 
     @Override
-    public List<Movie> getMoviesList() {
-        return SugarRecord.listAll(Movie.class);
+    public List<Element> getElementList() {
+        return SugarRecord.listAll(Element.class);
     }
 
     @Override
-    public Movie getMovie(long id) {
-        List<Movie> movies = getMoviesList();
-        for (Movie movie: movies) {
-            if (movie.getId() == id) {
-                return movie;
+    public Element getElement(long id) {
+        List<Element> movies = getElementList();
+        for (Element element : movies) {
+            if (element.getId() == id) {
+                return element;
             }
         }
-        return new Movie();
+        return new Element();
+    }
+
+    @Override
+    public void saveFavourite(Element element) {
+        SugarRecord.saveInTx(element);
     }
 
     /*@Override
     public void updateMovies(List<Movie> movies) {
-        List<Movie> favourites = getMoviesList();
+        List<Movie> favourites = getElementList();
         List<Movie> toUpdate = new ArrayList<>(favourites.size());
         for (Movie favourite : favourites) {
             for (Movie todo : movies) {
@@ -53,7 +58,7 @@ public class SugarOrmRepository implements Repository {
     }*/
 
     @Override
-    public boolean isInDB(Movie movie) {
-        return SugarRecord.findById(Movie.class, movie.getId()) != null;
+    public boolean isInDB(Element element) {
+        return SugarRecord.findById(Element.class, element.getId()) != null;
     }
 }

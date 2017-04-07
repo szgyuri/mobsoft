@@ -8,7 +8,7 @@ import javax.inject.Inject;
 
 import hu.bme.aut.mobsoft.lab.mobsoft.MobSoftApplication;
 import hu.bme.aut.mobsoft.lab.mobsoft.R;
-import hu.bme.aut.mobsoft.lab.mobsoft.model.Movie;
+import hu.bme.aut.mobsoft.lab.mobsoft.model.Element;
 
 /**
  * Created by Szabo Gyorgy on 2017. 03. 24..
@@ -36,6 +36,7 @@ public class ElementDetailsActivity extends AppCompatActivity implements Element
     protected void onStop() {
         super.onStop();
         elementDetailsPresenter.detachScreen();
+        //elementDetailsPresenter.saveFavourite(element);
     }
 
     @Override
@@ -49,7 +50,7 @@ public class ElementDetailsActivity extends AppCompatActivity implements Element
     }
 
     @Override
-    public void onSuccessGetMovie(Movie movie) {
+    public void onSuccessGetElement(Element element) {
         //TODO onSuccess
     }
 }

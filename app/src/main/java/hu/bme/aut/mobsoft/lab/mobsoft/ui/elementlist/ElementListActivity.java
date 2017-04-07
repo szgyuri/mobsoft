@@ -10,7 +10,7 @@ import javax.inject.Inject;
 
 import hu.bme.aut.mobsoft.lab.mobsoft.MobSoftApplication;
 import hu.bme.aut.mobsoft.lab.mobsoft.R;
-import hu.bme.aut.mobsoft.lab.mobsoft.model.Movie;
+import hu.bme.aut.mobsoft.lab.mobsoft.model.Element;
 
 /**
  * Created by Szabo Gyorgy on 2017. 03. 24..
@@ -41,7 +41,7 @@ public class ElementListActivity extends AppCompatActivity implements ElementLis
     }
 
     @Override
-    public void onSuccessGetMovieList(List<Movie> movies) {
+    public void onSuccessGetElementList(List<Element> movies) {
         //TODO set movies
     }
 

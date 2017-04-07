@@ -8,7 +8,7 @@ import javax.inject.Inject;
 
 import de.greenrobot.event.EventBus;
 import hu.bme.aut.mobsoft.lab.mobsoft.interactor.elementlist.ElementListInteractor;
-import hu.bme.aut.mobsoft.lab.mobsoft.interactor.events.GetMoviesListEvent;
+import hu.bme.aut.mobsoft.lab.mobsoft.interactor.events.GetElementListEvent;
 import hu.bme.aut.mobsoft.lab.mobsoft.ui.Presenter;
 
 import static hu.bme.aut.mobsoft.lab.mobsoft.MobSoftApplication.injector;
@@ -52,7 +52,7 @@ public class ElementListPresenter extends Presenter<ElementListScreen> {
         });
     }
 
-    public void onEventMovieListThread(GetMoviesListEvent event) {
+    public void onEventElementListThread(GetElementListEvent event) {
         if (event.getThrowable() != null) {
             event.getThrowable().printStackTrace();
             if (screen != null) {
@@ -61,7 +61,7 @@ public class ElementListPresenter extends Presenter<ElementListScreen> {
             Log.e("Networking", "Error reading favourites", event.getThrowable());
         } else {
             if (screen != null) {
-                screen.onSuccessGetMovieList(event.getMovies());
+                screen.onSuccessGetElementList(event.getMovies());
             }
         }
     }

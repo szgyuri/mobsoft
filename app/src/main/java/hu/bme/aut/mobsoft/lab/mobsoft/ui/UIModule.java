@@ -12,7 +12,6 @@ import dagger.Provides;
 import de.greenrobot.event.EventBus;
 import hu.bme.aut.mobsoft.lab.mobsoft.ui.elementdetails.ElementDetailsPresenter;
 import hu.bme.aut.mobsoft.lab.mobsoft.ui.elementlist.ElementListPresenter;
-import hu.bme.aut.mobsoft.lab.mobsoft.ui.main.MainPresenter;
 
 /**
  * Created by Mobsoft on 2017. 03. 24..
@@ -29,12 +28,6 @@ public class UIModule {
     @Provides
     public Context provideContext() {
         return context;
-    }
-
-    @Provides
-    @Singleton
-    public MainPresenter provideMainPresenter() {
-        return new MainPresenter();
     }
 
     @Provides

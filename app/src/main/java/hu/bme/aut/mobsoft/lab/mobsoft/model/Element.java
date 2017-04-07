@@ -7,15 +7,15 @@ import com.orm.dsl.Table;
  */
 
 @Table
-public class Movie {
+public class Element {
     private Long id = null;
     private String name;
 
 
-    public Movie() {
+    public Element() {
     }
 
-    public Movie(Long id, String name) {
+    public Element(Long id, String name) {
         this.id = id;
         this.name = name;
     }
