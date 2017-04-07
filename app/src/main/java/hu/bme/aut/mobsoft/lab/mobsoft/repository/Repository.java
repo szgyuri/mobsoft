@@ -15,9 +15,9 @@ public interface Repository {
 
     void close();
 
-    List<Movie> getMovieList();
+    List<Movie> getMoviesList();
 
-    void updateMovies(List<Movie> movies);
+    Movie getMovie(long id);
 
     boolean isInDB(Movie movie);
 }

@@ -2,11 +2,13 @@ package hu.bme.aut.mobsoft.lab.mobsoft.ui.elementdetails;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
 import hu.bme.aut.mobsoft.lab.mobsoft.MobSoftApplication;
 import hu.bme.aut.mobsoft.lab.mobsoft.R;
+import hu.bme.aut.mobsoft.lab.mobsoft.model.Movie;
 
 /**
  * Created by Szabo Gyorgy on 2017. 03. 24..
@@ -39,5 +41,15 @@ public class ElementDetailsActivity extends AppCompatActivity implements Element
     @Override
     public void addedToFavourite(String id) {
         //TODO
+    }
+
+    @Override
+    public void onFailure() {
+        Toast.makeText(getApplicationContext(), "Nem sikerült az elemek lekérése, kérlek próbáld újra!", Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onSuccessGetMovie(Movie movie) {
+        //TODO onSuccess
     }
 }
