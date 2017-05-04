@@ -1,13 +1,12 @@
 package hu.bme.aut.mobsoft.lab.mobsoft.ui.elementdetails;
 
-import hu.bme.aut.mobsoft.lab.mobsoft.model.Element;
+import hu.bme.aut.mobsoft.lab.mobsoft.model.ElementDetails;
 
 /**
  * Created by Szabo Gyorgy on 2017. 03. 24..
  */
 
 public interface ElementDetailsScreen {
-    void addedToFavourite(String id);
     void onFailure();
-    void onSuccessGetElement(Element element);
+    void onSuccessGetElement(ElementDetails element);
 }

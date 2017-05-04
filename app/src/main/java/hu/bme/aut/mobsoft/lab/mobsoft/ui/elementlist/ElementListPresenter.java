@@ -10,6 +10,7 @@ import de.greenrobot.event.EventBus;
 import hu.bme.aut.mobsoft.lab.mobsoft.interactor.elementlist.ElementListInteractor;
 import hu.bme.aut.mobsoft.lab.mobsoft.interactor.events.GetElementListEvent;
 import hu.bme.aut.mobsoft.lab.mobsoft.ui.Presenter;
+import hu.bme.aut.mobsoft.lab.mobsoft.util.ElementType;
 
 import static hu.bme.aut.mobsoft.lab.mobsoft.MobSoftApplication.injector;
 
@@ -43,16 +44,25 @@ public class ElementListPresenter extends Presenter<ElementListScreen> {
         super.detachScreen();
     }
 
-    public void getMoviesList() {
+    public void getMoviesList(final ElementType elementType) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
-                elementListInteractor.getMovieList();
+                elementListInteractor.getMovieList(elementType);
             }
         });
     }
 
-    public void onEventElementListThread(GetElementListEvent event) {
+    public void getMoviesListByText(final ElementType elementType, final String text) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                elementListInteractor.getMovieListByText(elementType, text);
+            }
+        });
+    }
+
+    public void onEventMainThread(GetElementListEvent event) {
         if (event.getThrowable() != null) {
             event.getThrowable().printStackTrace();
             if (screen != null) {
@@ -61,7 +71,7 @@ public class ElementListPresenter extends Presenter<ElementListScreen> {
             Log.e("Networking", "Error reading favourites", event.getThrowable());
         } else {
             if (screen != null) {
-                screen.onSuccessGetElementList(event.getMovies());
+                screen.onSuccessGetElementList(event.getElementList());
             }
         }
     }

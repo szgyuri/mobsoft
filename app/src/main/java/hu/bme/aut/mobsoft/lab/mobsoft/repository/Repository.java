@@ -17,9 +17,13 @@ public interface Repository {
 
     List<Element> getElementList();
 
-    Element getElement(long id);
+    Element getElement(String id);
 
-    void saveFavourite(Element element);
+    void saveFavouriteById(String id);
 
-    boolean isInDB(Element element);
+    void saveElementList(List<Element> elementList);
+
+    boolean isInDBElementById(String id);
+
+    //boolean isInDB(Element element);
 }

@@ -1,17 +1,17 @@
 package hu.bme.aut.mobsoft.lab.mobsoft.interactor.events;
 
-import hu.bme.aut.mobsoft.lab.mobsoft.model.Element;
+import hu.bme.aut.mobsoft.lab.mobsoft.model.ElementDetails;
 
 /**
  * Created by Szabo Gyorgy on 2017. 04. 07..
  */
 
-public class GetElementEvent {
+public class GetElementDetailsEvent {
     private int code;
-    private Element element;
+    private ElementDetails element;
     private Throwable throwable;
 
-    public GetElementEvent() {
+    public GetElementDetailsEvent() {
     }
 
     public int getCode() {
@@ -22,11 +22,11 @@ public class GetElementEvent {
         this.code = code;
     }
 
-    public Element getElement() {
+    public ElementDetails getElement() {
         return element;
     }
 
-    public void setElement(Element element) {
+    public void setElement(ElementDetails element) {
         this.element = element;
     }
 

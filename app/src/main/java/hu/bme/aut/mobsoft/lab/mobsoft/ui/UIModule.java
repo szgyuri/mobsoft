@@ -1,6 +1,8 @@
 package hu.bme.aut.mobsoft.lab.mobsoft.ui;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -52,6 +54,12 @@ public class UIModule {
     @Singleton
     public Executor provideExecutor() {
         return Executors.newFixedThreadPool(1);
+    }
+
+    @Provides
+    @Singleton
+    public SharedPreferences provideSharedPreferences() {
+        return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
 }

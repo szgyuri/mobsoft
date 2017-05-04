@@ -2,7 +2,6 @@ package hu.bme.aut.mobsoft.lab.mobsoft.repository;
 
 import android.content.Context;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import hu.bme.aut.mobsoft.lab.mobsoft.model.Element;
@@ -19,12 +18,12 @@ public class MemoryRepository implements Repository {
 
     @Override
     public void open(Context context) {
-        Element element0 = new Element(0L, "Rocky");
+        /*Element element0 = new Element(0L, "Rocky");
         Element element1 = new Element(1L, "300");
 
         elements = new ArrayList<>();
         elements.add(element0);
-        elements.add(element1);
+        elements.add(element1);*/
     }
 
     @Override
@@ -38,9 +37,9 @@ public class MemoryRepository implements Repository {
     }
 
     @Override
-    public Element getElement(long id) {
+    public Element getElement(String id) {
         for (Element element : elements) {
-            if (element.getId() == id) {
+            if (element.getImdbID().equals(id)) {
                 return element;
             }
         }
@@ -48,12 +47,22 @@ public class MemoryRepository implements Repository {
     }
 
     @Override
-    public void saveFavourite(Element element) {
-        elements.add(element);
+    public void saveFavouriteById(String id) {
+
     }
 
     @Override
+    public void saveElementList(List<Element> elementList) {
+
+    }
+
+    @Override
+    public boolean isInDBElementById(String id) {
+        return false;
+    }
+
+    /*@Override
     public boolean isInDB(Element element) {
         return elements.contains(element);
-    }
+    }*/
 }

@@ -10,7 +10,7 @@ import hu.bme.aut.mobsoft.lab.mobsoft.model.Element;
 
 public class GetElementListEvent {
     private int code;
-    private List<Element> movies;
+    private List<Element> elementList;
     private Throwable throwable;
 
     public GetElementListEvent() {
@@ -24,12 +24,12 @@ public class GetElementListEvent {
         this.code = code;
     }
 
-    public List<Element> getMovies() {
-        return movies;
+    public List<Element> getElementList() {
+        return elementList;
     }
 
-    public void setMovies(List<Element> movies) {
-        this.movies = movies;
+    public void setElementList(List<Element> elementList) {
+        this.elementList = elementList;
     }
 
     public Throwable getThrowable() {

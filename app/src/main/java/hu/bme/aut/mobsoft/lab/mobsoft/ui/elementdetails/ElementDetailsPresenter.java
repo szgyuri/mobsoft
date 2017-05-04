@@ -8,8 +8,7 @@ import javax.inject.Inject;
 
 import de.greenrobot.event.EventBus;
 import hu.bme.aut.mobsoft.lab.mobsoft.interactor.elementdetails.ElementDetailsInteractor;
-import hu.bme.aut.mobsoft.lab.mobsoft.interactor.events.GetElementEvent;
-import hu.bme.aut.mobsoft.lab.mobsoft.model.Element;
+import hu.bme.aut.mobsoft.lab.mobsoft.interactor.events.GetElementDetailsEvent;
 import hu.bme.aut.mobsoft.lab.mobsoft.ui.Presenter;
 
 import static hu.bme.aut.mobsoft.lab.mobsoft.MobSoftApplication.injector;
@@ -44,13 +43,11 @@ public class ElementDetailsPresenter extends Presenter<ElementDetailsScreen> {
         bus.unregister(this);
     }
 
-    public void saveFavourite(Element element) {
-        elementDetailsInteractor.saveFavourite(element);
-        // TODO ode majd a getElement()-hez hasonló kezelés kell, meg kell mondani, h mi legyen
-        // ha nem sikerült a mentés meg ilyenek
+    public void saveFavouriteById(String id) {
+        elementDetailsInteractor.saveFavouriteById(id);
     }
 
-    public void getElement(final long id) {
+    public void getElement(final String id) {
         executor.execute(new Runnable() {
             @Override
             public void run() {
@@ -59,7 +56,7 @@ public class ElementDetailsPresenter extends Presenter<ElementDetailsScreen> {
         });
     }
 
-    public void onEventElementListThread(GetElementEvent event) {
+    public void onEventMainThread(GetElementDetailsEvent event) {
         if (event.getThrowable() != null) {
             event.getThrowable().printStackTrace();
             if (screen != null) {

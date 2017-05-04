@@ -4,9 +4,10 @@ import javax.inject.Inject;
 
 import de.greenrobot.event.EventBus;
 import hu.bme.aut.mobsoft.lab.mobsoft.MobSoftApplication;
-import hu.bme.aut.mobsoft.lab.mobsoft.interactor.events.GetElementEvent;
-import hu.bme.aut.mobsoft.lab.mobsoft.interactor.events.SaveFavouriteEvent;
-import hu.bme.aut.mobsoft.lab.mobsoft.model.Element;
+import hu.bme.aut.mobsoft.lab.mobsoft.interactor.events.GetElementDetailsEvent;
+import hu.bme.aut.mobsoft.lab.mobsoft.interactor.events.GetElementListEvent;
+import hu.bme.aut.mobsoft.lab.mobsoft.model.ElementDetails;
+import hu.bme.aut.mobsoft.lab.mobsoft.network.element.ElementApi;
 import hu.bme.aut.mobsoft.lab.mobsoft.repository.Repository;
 
 /**
@@ -18,28 +19,32 @@ public class ElementDetailsInteractor {
     Repository repository;
     @Inject
     EventBus bus;
+    @Inject
+    ElementApi elementApi;
 
     public ElementDetailsInteractor() {
         MobSoftApplication.injector.inject(this);
     }
 
-    public void saveFavourite(Element element) {
-        SaveFavouriteEvent event = new SaveFavouriteEvent();
-        event.setElement(element);
+    public void saveFavouriteById(String id) {
+        repository.saveFavouriteById(id);
+    }
+
+    public void getMovie(String id) {
         try {
-            repository.saveFavourite(element);
-            bus.post(event);
+            ElementDetails elementDetails = elementApi.getElementDetails("/?i=" + id).execute().body();
+            postElementDetails(elementDetails);
         } catch (Exception e) {
+            GetElementListEvent event = new GetElementListEvent();
             event.setThrowable(e);
             bus.post(event);
         }
     }
 
-    public void getMovie(long id) {
-        GetElementEvent event = new GetElementEvent();
+    private void postElementDetails(ElementDetails elementDetails) {
+        GetElementDetailsEvent event = new GetElementDetailsEvent();
         try {
-            Element element = repository.getElement(id);
-            event.setElement(element);
+            event.setElement(elementDetails);
             bus.post(event);
         } catch (Exception e) {
             event.setThrowable(e);

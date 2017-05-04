@@ -8,6 +8,7 @@ import com.orm.SugarRecord;
 import java.util.List;
 
 import hu.bme.aut.mobsoft.lab.mobsoft.model.Element;
+import hu.bme.aut.mobsoft.lab.mobsoft.model.ElementID;
 
 /**
  * Created by Szabo Gyorgy on 2017. 04. 07..
@@ -30,10 +31,10 @@ public class SugarOrmRepository implements Repository {
     }
 
     @Override
-    public Element getElement(long id) {
+    public Element getElement(String id) {
         List<Element> movies = getElementList();
         for (Element element : movies) {
-            if (element.getId() == id) {
+            if (element.getImdbID().equals(id)) {
                 return element;
             }
         }
@@ -41,8 +42,37 @@ public class SugarOrmRepository implements Repository {
     }
 
     @Override
-    public void saveFavourite(Element element) {
-        SugarRecord.saveInTx(element);
+    public void saveFavouriteById(String id) {
+        SugarRecord.save(new ElementID(id));
+    }
+
+    private List<ElementID> getElementIDList() {
+        return SugarRecord.listAll(ElementID.class);
+    }
+
+    @Override
+    public boolean isInDBElementById(String id) {
+        List<ElementID> elementIDList = null;
+        try {
+            elementIDList = getElementIDList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (elementIDList != null && elementIDList.size() > 0) {
+            for (ElementID elementID : elementIDList) {
+                if (elementID.getId().equals(id)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        return false;
+    }
+
+    @Override
+    public void saveElementList(List<Element> elementList) {
+        SugarRecord.saveInTx(elementList);
     }
 
     /*@Override
@@ -57,8 +87,8 @@ public class SugarOrmRepository implements Repository {
         SugarRecord.saveInTx(toUpdate);
     }*/
 
-    @Override
+    /*@Override
     public boolean isInDB(Element element) {
-        return SugarRecord.findById(Element.class, element.getId()) != null;
-    }
+        return SugarRecord.findById(Element.class, element.getImdbID()) != null;
+    }*/
 }

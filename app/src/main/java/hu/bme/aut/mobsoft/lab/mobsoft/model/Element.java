@@ -1,6 +1,9 @@
 package hu.bme.aut.mobsoft.lab.mobsoft.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.orm.dsl.Table;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * Created by Szabo Gyorgy on 2017. 04. 07..
@@ -8,31 +11,73 @@ import com.orm.dsl.Table;
 
 @Table
 public class Element {
-    private Long id = null;
-    private String name;
+    @SerializedName("imdbID")
+    private String imdbID;
 
+    @SerializedName("Title")
+    private String title = null;
 
-    public Element() {
+    @SerializedName("Year")
+    private String year = null;
+
+    @SerializedName("Poster")
+    private String posterUrl = null;
+
+    @SerializedName("Type")
+    private String type = null;
+
+    private boolean isMovie;
+
+    private boolean isFavourite = false;
+
+    public String getYear() {
+        return year;
     }
 
-    public Element(Long id, String name) {
-        this.id = id;
-        this.name = name;
+    public String getPosterUrl() {
+        return posterUrl;
     }
 
-    public Long getId() {
-        return id;
+    public String getType() {
+        return type;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    /**
+     * Unique identifier for given element. Element may be movie or series.
+     **/
+    @ApiModelProperty(value = "Unique identifier for given element. Element may be movie or series.")
+    public String getImdbID() {
+        return imdbID;
+    }
+    public void setImdbID(String imdbID) {
+        this.imdbID = imdbID;
     }
 
-    public String getName() {
-        return name;
+
+    /**
+     * Title of the element.
+     **/
+    @ApiModelProperty(value = "Title of the element.")
+    public String getTitle() {
+        return title;
+    }
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public boolean isMovie() {
+        return isMovie;
+    }
+
+    public void setMovie(boolean movie) {
+        isMovie = movie;
+    }
+
+    public boolean isFavourite() {
+        return isFavourite;
+    }
+
+    public void setFavourite(boolean favourite) {
+        isFavourite = favourite;
     }
 }
