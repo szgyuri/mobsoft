@@ -95,4 +95,7 @@ dependencies {
     testCompile "org.mockito:mockito-core:1.10.19"
 
     compile "io.swagger:swagger-annotations:1.5.9"
+
+    compile 'com.google.android.gms:play-services-analytics:10.0.1'
 }
+apply plugin: 'com.google.gms.google-services'

@@ -113,7 +113,7 @@ public class ElementDetailsActivity extends AppCompatActivity implements Element
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        
+
         Set<String> stringSet = sp.getStringSet(Constants.FAVOURITE_SP_KEY, new HashSet<String>());
 
         if (isFavourite) {
